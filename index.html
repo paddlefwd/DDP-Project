@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Whitewater Streamflow</title>
+	<meta name="description" content="Whitewater Streamflow">
+	<meta name="author" content="Chris Rank">
+	<meta name="generator" content="slidify" />
+	
+	<!-- LOAD STYLE SHEETS -->
+	<link rel="stylesheet" href="libraries/frameworks/html5slides/default/styles.css">
+	<link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />  <link rel="stylesheet" href = "assets/css/ribbons.css">
+  
+</head>
+<body style='display: none'>
+	<section class='slides layout-regular template-regular'>
+     <article class="" id="slide-1" style="background:;">
+  <h3>Whitewater Streamflow Application</h3>
+  <p><br>
+<br>
+Chris Rank</p>
+
+<p>Developing Data Products</p>
+
+<p>Aug. 23, 2015</p>
+
+</article>
+
+<article class="" id="slide-2" style="background:;">
+  <h3>Background - National Water Information System</h3>
+  <p>The National Water Information System (NWIS) provides a single point of access for near real-time data from water gauging stations from local, state and federal agencies all across the United States.</p>
+
+<p>The specific set of data returned by a station depends on the source type (stream or reservoir) and the particular sensor package installed but stations commonly report:</p>
+
+<ul>
+<li>streamflow volume or reservoir level</li>
+<li>air and water temperatures</li>
+<li>water quality indicators</li>
+</ul>
+
+</article>
+
+<article class="" id="slide-3" style="background:;">
+  <h3>Whitewater Boating and Streamflow</h3>
+  <p>Whitewater boaters consider many factor when assessing the difficulty of a river section:</p>
+
+<ul>
+<li>gradient  - how steep is it?</li>
+<li>obstructions - is the channel rocky or smooth?</li>
+<li>streamflow - how much water is going down the channel?</li>
+</ul>
+
+<p>The first two elements are fairly constant; unless there are major floods or other changes these characteristics of a section do not change much from year to year. </p>
+
+<p>As the daily or seasonal streamflow changes mean that obstacles are exposed or covered and wave sizes increase or decrease. Boaters use this streamflow information to determine whether a run is within their capabilities depending on the level of hazard associated with a given flow.</p>
+
+</article>
+
+<article class="" id="slide-4" style="background:;">
+  <h3>Whitewater Streamflow Application</h3>
+  <p>The Whitewater Streamflow application retrieves flow information for a selection of popular stream gauges and allows the user to place a simple regression line on the data to see the trend over time.</p>
+
+<!-- Map generated in R 3.2.1 by googleVis 0.5.9 package -->
+
+<!-- Sat Aug 22 17:10:31 2015 -->
+
+<!-- jsHeader -->
+
+<script type="text/javascript">
+ 
+// jsData 
+function gvisDataMapID3515271b9a72 () {
+var data = new google.visualization.DataTable();
+var datajson =
+[
+ [
+ 40.03665248,
+-106.4400324,
+"Section: Gore Canyon<BR>Station: <a href=http://waterdata.usgs.gov/nwis/uv?09058000>09058000</a><BR>Location: Colorado River near Kremmling, CO" 
+],
+[
+ 38.4872189,
+-105.373604,
+"Section: Royal Gorge<BR>Station: <a href=http://waterdata.usgs.gov/nwis/uv?07094500>07094500</a><BR>Location: Arkansas River at Parkdale, CO" 
+],
+[
+ 36.3200333,
+-105.7544444,
+"Section: Taos Box<BR>Station: <a href=http://waterdata.usgs.gov/nwis/uv?08276500>08276500</a><BR>Location: Rio Grande Below Taos Junction Bridge near Taos, NM" 
+],
+[
+ 40.90829296,
+-109.422914,
+"Section: Dinosaur (Lodore)<BR>Station: <a href=http://waterdata.usgs.gov/nwis/uv?09234500>09234500</a><BR>Location: Green River near Greendale, UT" 
+],
+[
+ 36.8647099,
+-111.588216,
+"Section: Grand Canyon<BR>Station: <a href=http://waterdata.usgs.gov/nwis/uv?09380000>09380000</a><BR>Location: Colorado River at Lee's Ferry AZ" 
+],
+[
+ 45.75027778,
+-116.3238889,
+"Section: Main Salmon<BR>Station: <a href=http://waterdata.usgs.gov/nwis/uv?13317000>13317000</a><BR>Location: Salmon River at White Bird ID" 
+] 
+];
+data.addColumn('number','Latitude');
+data.addColumn('number','Longitude');
+data.addColumn('string','Info');
+data.addRows(datajson);
+return(data);
+}
+ 
+// jsDrawChart
+function drawChartMapID3515271b9a72() {
+var data = gvisDataMapID3515271b9a72();
+var options = {};
+options["showTip"] = true;
+options["tooltip"] = {isHtml:'True'};
+options["enableScrollWheel"] = true;
+options["mapType"] = "terrain";
+options["useMapTypeControl"] = true;
+
+    var chart = new google.visualization.Map(
+    document.getElementById('MapID3515271b9a72')
+    );
+    chart.draw(data,options);
+    
+
+}
+  
+ 
+// jsDisplayChart
+(function() {
+var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+var chartid = "map";
+  
+// Manually see if chartid is in pkgs (not all browsers support Array.indexOf)
+var i, newPackage = true;
+for (i = 0; newPackage && i < pkgs.length; i++) {
+if (pkgs[i] === chartid)
+newPackage = false;
+}
+if (newPackage)
+  pkgs.push(chartid);
+  
+// Add the drawChart function to the global list of callbacks
+callbacks.push(drawChartMapID3515271b9a72);
+})();
+function displayChartMapID3515271b9a72() {
+  var pkgs = window.__gvisPackages = window.__gvisPackages || [];
+  var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
+  window.clearTimeout(window.__gvisLoad);
+  // The timeout is set to 100 because otherwise the container div we are
+  // targeting might not be part of the document yet
+  window.__gvisLoad = setTimeout(function() {
+  var pkgCount = pkgs.length;
+  google.load("visualization", "1", { packages:pkgs, callback: function() {
+  if (pkgCount != pkgs.length) {
+  // Race condition where another setTimeout call snuck in after us; if
+  // that call added a package, we must not shift its callback
+  return;
+}
+while (callbacks.length > 0)
+callbacks.shift()();
+} });
+}, 100);
+}
+ 
+// jsFooter
+</script>
+ 
+
+<!-- jsChart -->  
+
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartMapID3515271b9a72"></script>
+ 
+
+<!-- divChart -->
+
+<div id="MapID3515271b9a72" 
+  style="width: 500; height: automatic;">
+</div>
+
+<p>Note: If map does not draw full width please refresh this slide.</p>
+
+</article>
+
+<article class="" id="slide-5" style="background:;">
+  <h3>Using the Whitewater Streamflow Application</h3>
+  <p>Run the <a href="http://paddlefwd.shinyapps.io/Streamflows">Whitewater Streamflow Application</a>.</p>
+
+<p>To retrieve streamflow data and view flow trend:</p>
+
+<ol>
+<li>From the pulldown, select the river section</li>
+<li>Set the number of days to retrieve on the slider</li>
+<li>Once the data is back you can adjust the number of days used for trendline with the lower slider.</li>
+</ol>
+
+<p>Note that this application retrieves live data from the NWIS server, it may take a few seconds to update the streamflow graph!</p>
+
+</article>
+
+  </section>
+</body>
+  <!-- LOAD JAVASCRIPTS  -->
+	<script src='libraries/frameworks/html5slides/default/slides.js'></script>
+	<!-- LOAD HIGHLIGHTER JS FILES -->
+	<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+	 
+	</html>

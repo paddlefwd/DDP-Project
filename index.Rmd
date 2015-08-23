@@ -1,0 +1,101 @@
+---
+title       : Whitewater Streamflow 
+subtitle    : Popular Western US Sections
+author      : Chris Rank
+job         : 
+framework   : html5slides   # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+
+---
+
+
+
+<h1>Whitewater Streamflow Application</h1>
+
+<br>
+<br>
+Chris Rank
+
+Developing Data Products
+
+Aug. 23, 2015
+
+---
+
+### Background - National Water Information System
+The National Water Information System (NWIS) provides a single point of access for near real-time data from water gauging stations from local, state and federal agencies all across the United States.
+
+
+The specific set of data returned by a station depends on the source type (stream or reservoir) and the particular sensor package installed but stations commonly report:
+
+* streamflow volume or reservoir level
+* air and water temperatures
+* water quality indicators
+
+
+---
+
+### Whitewater Boating and Streamflow
+
+Whitewater boaters consider many factor when assessing the difficulty of a river section:
+* gradient  - how steep is it?
+* obstructions - is the channel rocky or smooth?
+* streamflow - how much water is going down the channel?
+
+
+The first two elements are fairly constant; unless there are major floods or other changes these characteristics of a section do not change much from year to year. 
+
+As the daily or seasonal streamflow changes mean that obstacles are exposed or covered and wave sizes increase or decrease. Boaters use this streamflow information to determine whether a run is within their capabilities depending on the level of hazard associated with a given flow.
+
+---
+
+#### Whitewater Streamflow Application
+The Whitewater Streamflow application retrieves flow information for a selection of popular stream gauges and allows the user to place a simple regression line on the data to see the trend over time.
+
+
+```{r echo=FALSE,results='asis', tidy=FALSE}
+library(googleVis)
+op <- options(gvis.plot.tag='chart')
+
+LatLong <- c("40.03665248:-106.44003240",
+            "38.48721890:-105.37360400",
+            "36.32003330:-105.75444440",
+            "40.90829296:-109.42291400",
+            "36.86470990:-111.58821600",
+            "45.75027778:-116.32388890")
+
+Info <- c("Section: Gore Canyon<BR>Station: <a href=http://waterdata.usgs.gov/nwis/uv?09058000>09058000</a><BR>Location: Colorado River near Kremmling, CO",
+              "Section: Royal Gorge<BR>Station: <a href=http://waterdata.usgs.gov/nwis/uv?07094500>07094500</a><BR>Location: Arkansas River at Parkdale, CO",
+              "Section: Taos Box<BR>Station: <a href=http://waterdata.usgs.gov/nwis/uv?08276500>08276500</a><BR>Location: Rio Grande Below Taos Junction Bridge near Taos, NM",
+              "Section: Dinosaur (Lodore)<BR>Station: <a href=http://waterdata.usgs.gov/nwis/uv?09234500>09234500</a><BR>Location: Green River near Greendale, UT",
+              "Section: Grand Canyon<BR>Station: <a href=http://waterdata.usgs.gov/nwis/uv?09380000>09380000</a><BR>Location: Colorado River at Lee's Ferry AZ",
+              "Section: Main Salmon<BR>Station: <a href=http://waterdata.usgs.gov/nwis/uv?13317000>13317000</a><BR>Location: Salmon River at White Bird ID")
+
+station <- data.frame(cbind(LatLong, Info))
+plot(gvisMap(station, locationvar='LatLong', tipvar='Info',
+              options=list(showTip=TRUE, tooltip="{isHtml:'True'}",
+                           enableScrollWheel=TRUE, mapType='terrain',
+                           useMapTypeControl=TRUE)))
+```
+
+Note: If map does not draw full width please refresh this slide.
+
+---
+
+### Using the Whitewater Streamflow Application
+
+
+Run the [Whitewater Streamflow Application](http://paddlefwd.shinyapps.io/Streamflows).
+
+To retrieve streamflow data and view flow trend:
+
+1. From the pulldown, select the river section
+2. Set the number of days to retrieve on the slider
+3. Once the data is back you can adjust the number of days used for trendline with the lower slider.
+
+Note that this application retrieves live data from the NWIS server, it may take a few seconds to update the streamflow graph!
+
